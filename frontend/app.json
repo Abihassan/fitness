@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "MAKSH",
+    "slug": "maksh",
+    "scheme": "maksh",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/splash.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0A0A0C",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0A0C"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maksh.app"
+    },
+    "android": {
+      "package": "com.maksh.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/splash.png",
+        "backgroundColor": "#0A0A0C"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/images/splash.png"
+    },
+    "plugins": ["expo-status-bar", "expo-secure-store"]
+  }
+}
