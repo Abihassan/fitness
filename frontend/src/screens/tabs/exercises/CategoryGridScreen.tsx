@@ -48,21 +48,35 @@ export default function CategoryGridScreen() {
         </ScrollView>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 24 }}>
-          <View className="flex-row flex-wrap" style={{ gap: 12 }}>
+          <View className="flex-row flex-wrap justify-between">
             {CATEGORIES.map((cat) => (
               <Pressable
                 key={cat.key}
-                onPress={() => navigation.navigate("CategoryDetail", { categoryKey: cat.key, label: cat.label, filter: cat.filter })}
-                style={{ width: "31%" }}
-                className="bg-ink2 border border-line rounded-2xl py-4 items-center"
+                onPress={() =>
+                  navigation.navigate("CategoryDetail", {
+                    categoryKey: cat.key,
+                    label: cat.label,
+                    filter: cat.filter,
+                  })
+                }
+                style={{ width: "48%" }}
+                className="bg-ink2 border border-line rounded-3xl py-6 items-center mb-4"
               >
-                <View className="w-12 h-12 rounded-xl bg-ink items-center justify-center mb-2">
-                  <Image source={cat.icon} style={{ width: 28, height: 28 }} resizeMode="contain" />
+                <View className="w-16 h-16 rounded-2xl bg-ink items-center justify-center mb-3">
+                  <Image
+                    source={cat.icon}
+                    style={{ width: 36, height: 36 }}
+                    resizeMode="contain"
+                  />
                 </View>
-                <Text className="text-bone font-body_semibold text-[11px] text-center px-1">{cat.label}</Text>
+
+                <Text className="text-bone font-body_semibold text-sm text-center px-2">
+                  {cat.label}
+                </Text>
               </Pressable>
             ))}
           </View>
+
         </ScrollView>
       )}
     </View>
