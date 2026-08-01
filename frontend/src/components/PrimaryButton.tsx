@@ -1,6 +1,10 @@
 import React from "react";
 import { Pressable, Text } from "react-native";
-import Animated, { useSharedValue, useAnimatedStyle, withSpring } from "react-native-reanimated";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Haptics from "expo-haptics";
 import { gradients } from "../theme/colors";
@@ -28,21 +32,36 @@ export default function PrimaryButton({
   className = "",
 }: PrimaryButtonProps) {
   const scale = useSharedValue(1);
-  const animatedStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
 
   const isGhost = variant === "ghost";
   const colorPair = gradients[variant as Mood] ?? gradients.volt;
   const padY = size === "lg" ? "py-4" : "py-3";
 
   const handlePressIn = () => {
-    scale.value = withSpring(0.97, { damping: 15, stiffness: 300 });
+    scale.value = withSpring(0.97, {
+      damping: 15,
+      stiffness: 300,
+    });
   };
+
   const handlePressOut = () => {
-    scale.value = withSpring(1, { damping: 12, stiffness: 250 });
+    scale.value = withSpring(1, {
+      damping: 12,
+      stiffness: 250,
+    });
   };
+
   const handlePress = () => {
     if (disabled) return;
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
+
+    Haptics.impactAsync(
+      Haptics.ImpactFeedbackStyle.Medium
+    ).catch(() => {});
+
     onPress?.();
   };
 
@@ -59,7 +78,10 @@ export default function PrimaryButton({
         }`}
       >
         {icon}
-        <Text className="text-bone font-body_semibold text-base ml-2">{label}</Text>
+
+        <Text className="text-bone font-body_semibold text-base ml-2">
+          {label}
+        </Text>
       </AnimatedPressable>
     );
   }
@@ -71,7 +93,7 @@ export default function PrimaryButton({
       onPressOut={handlePressOut}
       disabled={disabled}
       style={animatedStyle}
-      className={`rounded-3xl overflow-hidden ${className} ${
+      className={`h-14 rounded-xl overflow-hidden ${className} ${
         disabled ? "opacity-40" : ""
       }`}
     >
@@ -79,14 +101,20 @@ export default function PrimaryButton({
         colors={colorPair}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        className="h-16 items-center justify-center flex-row"
+        style={{
+          height: 56,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "row",
+        }}
       >
         {icon}
 
-        <Text className="text-void font-body_bold text-lg ml-2">
+        <Text className="text-void font-bold text-lg ml-2">
           {label}
         </Text>
       </LinearGradient>
     </AnimatedPressable>
   );
+
 }

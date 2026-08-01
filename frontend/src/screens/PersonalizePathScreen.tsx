@@ -81,13 +81,7 @@ export default function PersonalizePathScreen() {
         <OptionRow label="Improve Fitness" selected={goal === "endurance"} onPress={() => setGoal("endurance")} icon={<Heart size={18} color={iconColor(goal === "endurance")} />} />
       </View>
 
-      <PrimaryButton
-        label="Continue"
-        variant="volt"
-        onPress={finish}
-        className="w-full"
-      />
-
+      <PrimaryButton label="Continue" variant="volt" onPress={finish} />
     </ScrollView>
   );
 }
