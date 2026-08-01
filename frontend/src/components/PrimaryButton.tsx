@@ -71,16 +71,21 @@ export default function PrimaryButton({
       onPressOut={handlePressOut}
       disabled={disabled}
       style={animatedStyle}
-      className={`rounded-2xl overflow-hidden ${className} ${disabled ? "opacity-40" : ""}`}
+      className={`rounded-3xl overflow-hidden ${className} ${
+        disabled ? "opacity-40" : ""
+      }`}
     >
       <LinearGradient
         colors={colorPair}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        className={`${padY} items-center justify-center flex-row`}
+        className="h-16 items-center justify-center flex-row"
       >
         {icon}
-        <Text className="text-void font-body_semibold text-base ml-2">{label}</Text>
+
+        <Text className="text-void font-body_bold text-lg ml-2">
+          {label}
+        </Text>
       </LinearGradient>
     </AnimatedPressable>
   );
